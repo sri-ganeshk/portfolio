@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0a0a0f;
+  --secondary: #131320;
+  --accent-primary: #5D3FD3;
+  --accent-secondary: #00FFFF;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+@layer components {
+  .neon-text {
+    text-shadow: 0 0 5px rgba(93, 63, 211, 0.5),
+                0 0 10px rgba(93, 63, 211, 0.3),
+                0 0 15px rgba(93, 63, 211, 0.1);
+  }
+  
+  .neon-border {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5),
+                0 0 10px rgba(0, 255, 255, 0.3),
+                0 0 15px rgba(0, 255, 255, 0.1);
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#5D3FD3] to-[#00FFFF];
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 md:px-8 lg:px-16;
+  }
+  
+  .glass-card {
+    @apply bg-opacity-10 bg-white backdrop-filter backdrop-blur-lg border border-gray-700 rounded-lg;
+  }
+}
