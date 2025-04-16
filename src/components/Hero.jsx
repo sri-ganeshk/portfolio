@@ -108,7 +108,7 @@ const Hero = () => {
         >
           <motion.div variants={childVariants} className="mb-4">
             <div className="inline-block w-12 h-[1px] bg-muted mr-4 align-middle"></div>
-            <span className="text-muted text-sm font-mono">PORTFOLIO / VERSION 01</span>
+            <span className="text-muted text-sm font-mono">PORTFOLIO </span>
           </motion.div>
           
           {/* Nothing-inspired headline with dotted/pixel effect */}
