@@ -1,47 +1,48 @@
 import { useState, useEffect } from 'react';
-import Header from './components/layout/Header';
-import Hero from './components/sections/Hero';
-import About from './components/sections/About';
-import Skills from './components/sections/Skills';
-import Projects from './components/sections/Projects';
-import Education from './components/sections/Education';
-import Additional from './components/sections/Additional';
-import Contact from './components/sections/Contact';
-import Footer from './components/layout/Footer';
-import ParticleBackground from './components/ui/ParticleBackground';
-import Loader from './components/ui/Loader';
+import { motion, AnimatePresence } from 'framer-motion';
+import Header from './components/Header.jsx';
+import Hero from './components/Hero.jsx';
+import Projects from './components/Projects.jsx';
+import Skills from './components/Skills.jsx';
+import Education from './components/Education.jsx';
+import Contact from './components/Contact.jsx';
+import Footer from './components/Footer.jsx';
+import Loader from './components/Loader.jsx';
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Simulate loading time
-    setTimeout(() => {
-      setLoading(false);
-    }, 2500);
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-gray-100 overflow-hidden">
-      <ParticleBackground />
-      <div className="relative z-10">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Education />
-          <Additional />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </div>
+    <AnimatePresence>
+      {loading ? (
+        <Loader key="loader" />
+      ) : (
+        <motion.div
+          key="app"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-primary text-accent min-h-screen"
+        >
+          <Header />
+          <main>
+            <Hero />
+            <Projects />
+            <Skills />
+            <Education />
+            <Contact />
+          </main>
+          <Footer />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
