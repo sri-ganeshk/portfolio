@@ -135,7 +135,7 @@ const Contact = () => {
       </a>
       
       {/* LinkedIn - Added new */}
-      <a href="https://www.linkedin.com/in/sri-ganesh-k/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+      <a href="https://www.linkedin.com/in/sri-ganesh-k-5706ab269/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
         <span className="sr-only">LinkedIn</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.217 11.846 12.934 13.291 12.934 14.785V20.452H9.38V9H12.764V10.561H12.813C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.339 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.339 3.305C6.482 3.305 7.404 4.23 7.404 5.368C7.404 6.507 6.483 7.433 5.339 7.433ZM7.119 20.452H3.555V9H7.119V20.452Z" fill="#F5F5F5"/>
@@ -143,7 +143,7 @@ const Contact = () => {
       </a>
       
       {/* Twitter - Added new */}
-      <a href="https://twitter.com/sri_ganeshk" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+      <a href="https://x.com/sriganeshkn" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
         <span className="sr-only">Twitter</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.244 2.25H21.552L14.325 10.51L22.827 21.75H16.17L10.956 14.933L4.99 21.75H1.68L9.41 12.915L1.254 2.25H8.08L12.793 8.481L18.244 2.25ZM17.099 19.77H18.979L7.055 4.126H5.028L17.099 19.77Z" fill="#F5F5F5"/>
