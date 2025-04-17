@@ -23,7 +23,7 @@ const Projects = () => {
       description: "An innovative serverless attendance solution leveraging AWS Lambda and Python to deliver cost-effective, real-time attendance tracking for educational institutions. The system employs sophisticated HTML parsing techniques with BeautifulSoup to extract attendance data from various sources, processes it through a highly optimized pipeline, and delivers accurate, instantaneous results to thousands of users daily without incurring operational costs, making it an ideal solution for resource-constrained educational environments.",
       tech: ["AWS Lambda", "Python", "WebSocket", "DynamoDB", "BeautifulSoup"],
       image: "/images/attendance-preview.png",
-      liveLink: "https://wa.me/919491958165?text=hi",
+      liveLink: "https://github.com/sri-ganeshk/Attendance_tracker",
       highlights: [
         "Handles ~3,000 unique daily users",
         "10,000+ requests/day at zero cost",
