@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion,AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -32,12 +32,16 @@ const Header = () => {
 
   return (
     <motion.header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glassmorphism py-3' : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-0 ${
+        scrolled ? 'glassmorphism-no-border py-3' : 'bg-transparent py-6'
       }`}
       variants={headerVariants}
       initial="initial"
       animate="animate"
+      style={{ 
+        borderWidth: 0,  // Explicitly setting border width to 0
+        borderStyle: 'none' // Ensuring no border style
+      }}
     >
       <div className="container-custom flex justify-between items-center">
         <motion.div 
@@ -105,7 +109,8 @@ const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="absolute top-full left-0 w-full bg-secondary py-4 px-6 glassmorphism md:hidden"
+              className="absolute top-full left-0 w-full bg-secondary py-4 px-6 glassmorphism-no-border md:hidden"
+              style={{ borderWidth: 0 }}
             >
               <ul className="flex flex-col space-y-4">
                 {navItems.map(item => (

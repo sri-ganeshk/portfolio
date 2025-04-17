@@ -41,11 +41,12 @@ body {
   border-radius: 4px;
 }
 
-.glassmorphism {
-  background: rgba(26, 26, 26, 0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.glassmorphism-no-border {
+  /* Copy all properties from your glassmorphism class except border-related ones */
+  background: rgba(255, 255, 255, 0.1); /* example background */
+  backdrop-filter: blur(10px);
+  border: none !important;
+  box-shadow: none; /* If the border effect comes from box-shadow */
 }
 
 /* Nothing-inspired dotted text */

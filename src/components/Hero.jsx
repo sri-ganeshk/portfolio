@@ -95,8 +95,8 @@ const Hero = () => {
       
       {/* Nothing-styled top bar */}
       <div className="absolute top-0 left-0 right-0 bg-primary bg-opacity-50 flex justify-between items-center px-6 py-1 border-b border-muted border-opacity-10">
-        <div className="font-mono text-xs text-muted">{formatTime(currentTime)} -- {formatDate(currentTime)}</div>
-        <div className="font-mono text-xs text-muted">SRI-GANESHK / TODAY</div>
+        <div className="font-mono text-xs text-muted">{formatTime(currentTime)}-{formatDate(currentTime)}</div>
+        <div className="font-mono text-xs text-muted">~NRUSIMHA SRI GANESH K</div>
       </div>
       
       <div className="container-custom">

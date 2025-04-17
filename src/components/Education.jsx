@@ -20,7 +20,10 @@ const Education = () => {
   ];
 
   const achievements = [
-    "National Player in KV for Handball goalkeeper",
+    "Winner – IWD Hackathon by Google Developer Group Vizag",
+    "4* Coder on CodeChef, solved 600+ DSA problems across platforms like LeetCode, CodeChef, and CSES",
+    "CodeChef Student Chapter & GDG CP Lead – Led competitive programming events and workshops",
+    "National Handball Goalkeeper – Kendriya Vidyalaya",
     "2019 National & Indian National Mathematics Olympiad (INMO) Regionalist",
     "Participated in Hackathon conducted by VIIT ACM Chapter"
   ];
