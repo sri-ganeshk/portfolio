@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Avatar from './Avatar'; // Added import
 
 const DottedText = ({ text }) => {
   const letters = text.split('');
@@ -99,7 +100,13 @@ const Hero = () => {
         <div className="font-mono text-xs text-muted">~NRUSIMHA SRI GANESH K</div>
       </div>
       
-      <div className="container-custom">
+      <div className="container-custom"> {/* Main container for hero content */}
+        
+        {/* Avatar Element - Added Here */}
+        <div className="hidden md:block absolute top-1/2 right-20 lg:right-32 transform -translate-y-1/2 z-10">
+          <Avatar />
+        </div>
+
         <motion.div 
           className="max-w-3xl"
           variants={containerVariants}
