@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Avatar3D from './Avatar3D'; // Added import
+import Avatar3D from './Avatar3D'; // Re-added import
 
 const DottedText = ({ text }) => {
   const letters = text.split('');
@@ -102,7 +102,7 @@ const Hero = () => {
       
       <div className="container-custom"> {/* Main container for hero content */}
         
-        {/* Avatar3D Element - Added Here */}
+        {/* Avatar3D Element - Re-added Here */}
         <div 
           className="hidden md:block absolute top-1/2 right-10 lg:right-16 transform -translate-y-1/2 z-10"
           style={{ width: '300px', height: '450px' }} // Define area for the 3D avatar
