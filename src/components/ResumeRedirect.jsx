@@ -2,8 +2,8 @@ import { useEffect } from "react";
 
 export default function ResumeRedirect() {
   useEffect(() => {
-    // Redirect to external Google Drive link
-    window.location.href = "https://drive.google.com/file/d/1hrCi8RYmjNIVSr-1TBs4xWz9CQLf3Vyv/view?usp=sharing";
+    const resumeUrl = import.meta.env.VITE_RESUME_URL
+    window.location.href = resumeUrl;
   }, []);
 
   return (
