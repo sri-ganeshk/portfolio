@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ResumeRedirect from './components/ResumeRedirect.jsx';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import Projects from './components/Projects.jsx';
@@ -48,6 +49,7 @@ function App() {
                     <Contact />
                   </main>
                   <Footer />
+                  <Analytics />
                 </motion.div>
               )}
             </AnimatePresence>
