@@ -1,28 +1,12 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import portfolioData from '../data.json';
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const categories = [
-    {
-      name: "Frontend",
-      skills: ["React.js", "React Native", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"]
-    },
-    {
-      name: "Backend",
-      skills: ["Node.js", "Express.js", "Python", "C++", "REST APIs", "WebSockets"]
-    },
-    {
-      name: "Database",
-      skills: ["SQL", "Prisma", "MongoDB", "DynamoDB", "PostgreSQL"]
-    },
-    {
-      name: "DevOps & Tools",
-      skills: ["AWS Lambda", "Git", "BeautifulSoup", "Google Gemini API"]
-    }
-  ];
+  const categories = portfolioData.technical_skills;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,7 +50,7 @@ const Skills = () => {
               variants={itemVariants}
             >
               <h3 className="text-light font-medium mb-4 pb-2 border-b border-muted border-opacity-20">
-                {category.name}
+                {category.category}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, j) => (

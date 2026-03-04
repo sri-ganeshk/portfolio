@@ -3,8 +3,10 @@ import { motion, useInView } from 'framer-motion';
 import { Mail, Phone, Share2, Twitter } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { github, linkdien } from '../constant.js';
+import portfolioData from '../data.json';
 
 const Contact = () => {
+  const { personal } = portfolioData;
   const ref = useRef(null);
   const formRef = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -59,9 +61,9 @@ const Contact = () => {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
-      to_email: 'ganeshknsml@gmail.com',
+      to_email: personal.email,
       date_time: formattedDate,
-      user_login: 'sri-ganeshk'
+      user_login: 'sri-ganeshk' // could also use personal.links.github.split('/').pop()
     };
 
     emailjs.send(serviceId, templateId, templateParams)
@@ -143,8 +145,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-sm mb-1">Email</h4>
-                  <a href="mailto:sriganesh.kollimarla@gmail.com" className="text-muted hover:text-light transition-colors">
-                    sriganesh.kollimarla@gmail.com
+                  <a href={`mailto:${personal.email}`} className="text-muted hover:text-light transition-colors">
+                    {personal.email}
                   </a>
                 </div>
               </motion.div>
@@ -158,8 +160,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-sm mb-1">Phone</h4>
-                  <a href="tel:+916303798641" className="text-muted hover:text-light transition-colors">
-                    +91 6303798641
+                  <a href={`tel:${personal.mobile.replace(/\\s+/g, '')}`} className="text-muted hover:text-light transition-colors">
+                    {personal.mobile}
                   </a>
                 </div>
               </motion.div>
@@ -175,21 +177,15 @@ const Contact = () => {
                   <h4 className="font-medium text-sm mb-1">Connect</h4>
                   <div className="flex gap-3 mt-2">
                     {/* GitHub */}
-                    <a href="https://github.com/sri-ganeshk" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex items-center justify-center">
+                    <a href={personal.links.github} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex items-center justify-center">
                       <span className="sr-only">GitHub</span>
                       <span className="w-5 h-5 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5" dangerouslySetInnerHTML={{ __html: github }} />
                     </a>
                     
                     {/* LinkedIn */}
-                    <a href="https://www.linkedin.com/in/sri-ganesh-k-5706ab269/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex items-center justify-center">
+                    <a href={personal.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity flex items-center justify-center">
                       <span className="sr-only">LinkedIn</span>
                       <span className="w-5 h-5 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5" dangerouslySetInnerHTML={{ __html: linkdien }} />
-                    </a>
-                    
-                    {/* Twitter */}
-                    <a href="https://x.com/sriganeshkn" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                      <span className="sr-only">Twitter</span>
-                      <Twitter className="w-5 h-5 text-light" />
                     </a>
                   </div>
                 </div>

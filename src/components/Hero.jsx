@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import Avatar from './Avatar'; // Added import
 import { github, linkdien, codechef, leetcode } from '../constant.js';
+import portfolioData from '../data.json';
 
 const DottedText = ({ text }) => {
   const letters = text.split('');
@@ -15,6 +16,7 @@ const DottedText = ({ text }) => {
 };
 
 const Hero = () => {
+  const { personal, summary } = portfolioData;
   const [currentTime, setCurrentTime] = useState(new Date());
   
   useEffect(() => {
@@ -120,7 +122,7 @@ const Hero = () => {
           >
             <div className="mb-2 font-mono text-sm tracking-wider text-muted">HELLO, I'M</div>
             <div className="nothing-headline font-mono tracking-wide">
-              <DottedText text="SRI GANESH K" />
+              <DottedText text={personal.name.toUpperCase()} />
             </div>
             <div className="mt-3 text-gradient">Tech Enthusiast & Developer</div>
           </motion.h1>
@@ -129,8 +131,7 @@ const Hero = () => {
             variants={childVariants}
             className="text-muted text-lg md:text-xl mb-10 max-w-xl"
           >
-            Solving real-world problems through innovative solutions. 
-            Eager to apply technical expertise and creativity in dynamic environments.
+            {summary}
           </motion.p>
           
           {/* Social media and resume section */}
@@ -138,25 +139,25 @@ const Hero = () => {
             variants={childVariants}
             className="flex flex-wrap gap-6 mb-12"
           >
-            <a href="https://github.com/sri-ganeshk" target="_blank" rel="noopener noreferrer" 
+            <a href={personal.links.github} target="_blank" rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm text-muted hover:text-light transition-colors">
               <span className="w-5 h-5 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5" dangerouslySetInnerHTML={{ __html: github }} />
               GITHUB
             </a>
             
-            <a href="https://leetcode.com/u/sri_2498" target="_blank" rel="noopener noreferrer" 
+            <a href={personal.links.leetcode} target="_blank" rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm text-muted hover:text-light transition-colors">
               <span className="w-5 h-5 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5 opacity-70 hover:opacity-100 transition-opacity" dangerouslySetInnerHTML={{ __html: leetcode }} />
               LEETCODE
             </a>
             
-            <a href="https://www.codechef.com/users/s_2498" target="_blank" rel="noopener noreferrer" 
+            <a href={personal.links.codechef} target="_blank" rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm text-muted hover:text-light transition-colors">
               <span className="w-5 h-5 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5 opacity-70 hover:opacity-100 transition-opacity" dangerouslySetInnerHTML={{ __html: codechef }} />
               CODECHEF
             </a>
             
-            <a href="https://www.linkedin.com/in/sri-ganesh-k-5706ab269/" target="_blank" rel="noopener noreferrer" 
+            <a href={personal.links.linkedin} target="_blank" rel="noopener noreferrer" 
               className="flex items-center gap-2 text-sm text-muted hover:text-light transition-colors">
               <span className="w-5 h-5 flex items-center justify-center [&>svg]:w-5 [&>svg]:h-5" dangerouslySetInnerHTML={{ __html: linkdien }} />
               LINKEDIN

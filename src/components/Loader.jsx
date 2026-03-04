@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import portfolioData from '../data.json';
 
 const Loader = () => {
   return (
@@ -44,7 +45,7 @@ const Loader = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          SRI GANESH K
+          {portfolioData.personal.name.toUpperCase()}
         </motion.p>
       </motion.div>
     </div>
