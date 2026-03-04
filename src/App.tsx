@@ -57,7 +57,7 @@ function App(): React.ReactElement {
         />
       </Routes>
       <Toaster
-        position="bottom-right"
+        position="top-right"
         theme="dark"
         duration={3000}
         toastOptions={{
