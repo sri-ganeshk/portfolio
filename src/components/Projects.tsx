@@ -1,21 +1,26 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import data from '../data.json';
 
-const Projects = () => {
-  const [activeProject, setActiveProject] = useState(0);
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  highlights: string[];
+  image?: string;
+  liveLink?: string;
+  demoLink?: string;
+}
 
-  const projects = data.projects;
-  
+const Projects: React.FC = () => {
+  const [activeProject, setActiveProject] = useState(0);
+  const projects = data.projects as Project[];
+
+
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
 
   const itemVariants = {
@@ -26,7 +31,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-padding bg-primary">
       <div className="container-custom">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -39,14 +44,8 @@ const Projects = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
-          {/* Project selector - mobile version */}
-          <motion.div 
-            className="md:hidden w-full mb-4"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          {/* Mobile project selector */}
+          <motion.div className="md:hidden w-full mb-4" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <div className="flex items-center justify-between mb-3">
               <p className="text-xs text-muted">SELECT PROJECT</p>
               <div className="text-xs text-muted">{activeProject + 1}/{projects.length}</div>
@@ -57,80 +56,48 @@ const Projects = () => {
                   key={index}
                   variants={itemVariants}
                   className={`snap-start flex-shrink-0 w-[75%] mr-3 p-4 cursor-pointer transition-all duration-300 ${
-                    activeProject === index 
-                      ? "bg-secondary bg-opacity-50 border border-light border-opacity-20" 
+                    activeProject === index
+                      ? "bg-secondary bg-opacity-50 border border-light border-opacity-20"
                       : "bg-secondary bg-opacity-10 border border-muted border-opacity-10"
                   }`}
                   onClick={() => setActiveProject(index)}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <h3 className={`font-medium text-sm mb-1 ${
-                    activeProject === index ? "text-light" : "text-muted"
-                  }`}>
+                  <h3 className={`font-medium text-sm mb-1 ${activeProject === index ? "text-light" : "text-muted"}`}>
                     {project.title.split(" - ")[0]}
                   </h3>
-                  <p className="text-xs text-muted line-clamp-1">
-                    {project.tech.slice(0, 3).join(", ")}
-                  </p>
+                  <p className="text-xs text-muted line-clamp-1">{project.tech.slice(0, 3).join(", ")}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Project selector - desktop version */}
-          <motion.div 
-            className="hidden md:block md:col-span-4" 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          {/* Desktop project selector */}
+          <motion.div className="hidden md:block md:col-span-4" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             {projects.map((project, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 className={`border-l border-muted ${
                   activeProject === index ? "border-opacity-100" : "border-opacity-20"
-                } p-4 cursor-pointer transition-all duration-300 ${
-                  activeProject === index ? "bg-secondary bg-opacity-30" : ""
-                }`}
+                } p-4 cursor-pointer transition-all duration-300 ${activeProject === index ? "bg-secondary bg-opacity-30" : ""}`}
                 onClick={() => setActiveProject(index)}
-                whileHover={{
-                  backgroundColor: "rgba(26, 26, 26, 0.3)",
-                  transition: { duration: 0.2 }
-                }}
+                whileHover={{ backgroundColor: "rgba(26, 26, 26, 0.3)", transition: { duration: 0.2 } }}
               >
-                <h3 className={`font-medium text-sm mb-1 ${
-                  activeProject === index ? "text-light" : "text-muted"
-                }`}>
+                <h3 className={`font-medium text-sm mb-1 ${activeProject === index ? "text-light" : "text-muted"}`}>
                   {project.title.split(" - ")[0]}
                 </h3>
-                <p className="text-xs text-muted line-clamp-1">
-                  {project.tech.slice(0, 3).join(", ")}
-                </p>
+                <p className="text-xs text-muted line-clamp-1">{project.tech.slice(0, 3).join(", ")}</p>
               </motion.div>
             ))}
           </motion.div>
 
           {/* Project details */}
-          <motion.div 
-            className="col-span-1 md:col-span-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            key={activeProject}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.div 
-              className="bg-secondary bg-opacity-20 p-4 md:p-6 border border-muted border-opacity-10"
-              initial={{ y: 20 }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-            >
+          <motion.div className="col-span-1 md:col-span-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} key={activeProject} transition={{ duration: 0.5 }}>
+            <motion.div className="bg-secondary bg-opacity-20 p-4 md:p-6 border border-muted border-opacity-10" initial={{ y: 20 }} animate={{ y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}>
               <h3 className="text-lg md:text-xl font-semibold mb-3">{projects[activeProject].title}</h3>
-              <p className="text-sm md:text-base text-muted mb-4 md:mb-6 leading-relaxed">
-                {projects[activeProject].description}
-              </p>
-              
+              <p className="text-sm md:text-base text-muted mb-4 md:mb-6 leading-relaxed">{projects[activeProject].description}</p>
+
               <div className="mb-4 md:mb-6">
                 <h4 className="text-xs md:text-sm font-mono text-light mb-2 md:mb-3">KEY HIGHLIGHTS</h4>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -142,34 +109,47 @@ const Projects = () => {
                   ))}
                 </ul>
               </div>
-              
+
               <div>
                 <h4 className="text-xs md:text-sm font-mono text-light mb-2 md:mb-3">TECHNOLOGIES</h4>
                 <div className="flex flex-wrap gap-2">
                   {projects[activeProject].tech.map((tech, i) => (
-                    <span 
-                      key={i} 
-                      className="text-xs py-1 px-2 md:px-3 bg-primary border border-muted border-opacity-20 rounded-sm"
-                    >
+                    <span key={i} className="text-xs py-1 px-2 md:px-3 bg-primary border border-muted border-opacity-20 rounded-sm">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {projects[activeProject].liveLink && (
-                <div className="mt-6 md:mt-8 flex justify-center md:justify-end">
-                  <a 
-                    href={projects[activeProject].liveLink}
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="font-mono text-xs inline-flex items-center px-5 py-2 md:px-6 md:py-2 border border-light hover:bg-light hover:bg-opacity-5 transition-all duration-300 group"
-                  >
-                    VIEW PROJECT
-                    <ExternalLink className="ml-2 w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
+
+              {(projects[activeProject].liveLink || projects[activeProject].demoLink) && (
+                <div className="mt-6 md:mt-8 flex flex-wrap gap-3 justify-center md:justify-end">
+                  {projects[activeProject].liveLink && (
+                    <a
+                      href={projects[activeProject].liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs inline-flex items-center px-5 py-2 md:px-6 md:py-2 border border-light hover:bg-light hover:bg-opacity-5 transition-all duration-300 group"
+                    >
+                      SOURCE CODE
+                      <ExternalLink className="ml-2 w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  )}
+                  {projects[activeProject].demoLink && (
+                    <a
+                      href={projects[activeProject].demoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs inline-flex items-center px-5 py-2 md:px-6 md:py-2 border border-muted hover:border-light hover:bg-light hover:bg-opacity-5 transition-all duration-300 group"
+                    >
+                      LIVE DEMO
+                      <ExternalLink className="ml-2 w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  )}
                 </div>
               )}
+
+
             </motion.div>
           </motion.div>
         </div>

@@ -1,15 +1,16 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import portfolioData from '../data.json';
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { personal } = portfolioData;
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-primary py-12 border-t border-muted border-opacity-20">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -20,11 +21,9 @@ const Footer = () => {
               <div className="w-[2px] h-6 bg-light mr-2"></div>
               <span className="font-mono text-lg tracking-wider">{personal.name.toUpperCase()}</span>
             </div>
-            <p className="text-muted text-sm">
-              Tech enthusiast building innovative solutions
-            </p>
+            <p className="text-muted text-sm">Tech enthusiast building innovative solutions</p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -38,9 +37,9 @@ const Footer = () => {
             <a href="#contact" className="text-muted hover:text-light transition-colors">Contact</a>
           </motion.div>
         </div>
-        
+
         <div className="border-t border-muted border-opacity-10 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -49,9 +48,6 @@ const Footer = () => {
           >
             © {currentYear} {personal.name}. All rights reserved.
           </motion.p>
-          
-          
-         
         </div>
       </div>
     </footer>

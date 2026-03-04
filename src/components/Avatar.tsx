@@ -1,49 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
+import type { CSSProperties } from 'react';
 
-// --- Style-derived Constants ---
-// Head
 const HEAD_WIDTH = 100;
 const HEAD_HEIGHT = 100;
-const HEAD_TOP_OFFSET = 50; // From container top to head top
-// Eye Sockets (relative to Head)
+const HEAD_TOP_OFFSET = 50;
 const EYE_SOCKET_WIDTH = 30;
 const EYE_SOCKET_HEIGHT = 35;
-const EYE_SOCKET_TOP_PERCENT = 0.30; // 30% from head top
-const EYE_SOCKET_LEFT_PERCENT = 0.20; // 20% from head left for left eye
-const EYE_SOCKET_RIGHT_PERCENT = 0.20; // 20% from head right for right eye
+const EYE_SOCKET_TOP_PERCENT = 0.30;
+const EYE_SOCKET_LEFT_PERCENT = 0.20;
+const EYE_SOCKET_RIGHT_PERCENT = 0.20;
 
-// Calculated Eye Socket positions relative to Head's top-left corner
 const LEFT_EYE_SOCKET_TOP = HEAD_HEIGHT * EYE_SOCKET_TOP_PERCENT;
 const LEFT_EYE_SOCKET_LEFT = HEAD_WIDTH * EYE_SOCKET_LEFT_PERCENT;
 
 const RIGHT_EYE_SOCKET_TOP = HEAD_HEIGHT * EYE_SOCKET_TOP_PERCENT;
 const RIGHT_EYE_SOCKET_LEFT = HEAD_WIDTH * (1 - EYE_SOCKET_RIGHT_PERCENT) - EYE_SOCKET_WIDTH;
 
-// Pupils
 const PUPIL_WIDTH = 12;
 const PUPIL_HEIGHT = 12;
 
-// Max Pupil Offset
 const MAX_PUPIL_OFFSET_X = (EYE_SOCKET_WIDTH / 2) - (PUPIL_WIDTH / 2);
 const MAX_PUPIL_OFFSET_Y = (EYE_SOCKET_HEIGHT / 2) - (PUPIL_HEIGHT / 2);
 
-// Avatar Tilt
 const MAX_AVATAR_TILT_ANGLE = 10;
 
-
-const Avatar = () => {
+const Avatar: React.FC = () => {
   const [leftPupilTransform, setLeftPupilTransform] = useState('translate(-50%, -50%)');
   const [rightPupilTransform, setRightPupilTransform] = useState('translate(-50%, -50%)');
   const [avatarTiltTransform, setAvatarTiltTransform] = useState('');
-  const avatarRef = useRef(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       if (!avatarRef.current) return;
-
       const avatarRect = avatarRef.current.getBoundingClientRect();
-      
-      // --- Avatar Tilt Calculation ---
       const avatarCenterX = avatarRect.left + avatarRect.width / 2;
       const avatarCenterY = avatarRect.top + avatarRect.height / 2;
       const deltaXAvatar = event.clientX - avatarCenterX;
@@ -54,11 +44,11 @@ const Avatar = () => {
 
       rotateX = Math.max(-MAX_AVATAR_TILT_ANGLE, Math.min(MAX_AVATAR_TILT_ANGLE, rotateX));
       rotateY = Math.max(-MAX_AVATAR_TILT_ANGLE, Math.min(MAX_AVATAR_TILT_ANGLE, rotateY));
-      
+
       setAvatarTiltTransform(`perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
 
-      // --- Pupil Movement Calculation ---
-      const headActualLeftInContainer = (styles.container.width - HEAD_WIDTH) / 2;
+      const CONTAINER_WIDTH = 180;
+      const headActualLeftInContainer = (CONTAINER_WIDTH - HEAD_WIDTH) / 2;
       const headViewportX = avatarRect.left + headActualLeftInContainer;
       const headViewportY = avatarRect.top + HEAD_TOP_OFFSET;
 
@@ -89,7 +79,7 @@ const Avatar = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const styles = { 
+  const styles: Record<string, CSSProperties> = {
     container: {
       width: 180,
       height: 220,
@@ -100,7 +90,7 @@ const Avatar = () => {
     head: {
       width: HEAD_WIDTH,
       height: HEAD_HEIGHT,
-      backgroundColor: '#cccccc', // Changed from #dddddd
+      backgroundColor: '#cccccc',
       borderRadius: '50%',
       position: 'absolute',
       top: HEAD_TOP_OFFSET,
@@ -110,15 +100,15 @@ const Avatar = () => {
     },
     hair: {
       width: 110,
-      height: 65, // Changed from 60
+      height: 65,
       backgroundColor: '#202020',
-      borderRadius: '50px 50px 20px 20px', // Changed from 10px 10px
+      borderRadius: '50px 50px 20px 20px',
       position: 'absolute',
-      top: 22, // Changed from 25
+      top: 22,
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 3,
-      borderTop: '2px solid #1a1a1a', // Added for definition
+      borderTop: '2px solid #1a1a1a',
     },
     headphoneBand: {
       width: 130,
@@ -127,7 +117,7 @@ const Avatar = () => {
       border: '3px solid #1a1a1a',
       borderRadius: '30px 30px 0 0',
       position: 'absolute',
-      top: 12, // Changed from 15
+      top: 12,
       left: '50%',
       transform: 'translateX(-50%)',
       zIndex: 4,
@@ -137,10 +127,10 @@ const Avatar = () => {
       height: 45,
       backgroundColor: '#252525',
       border: '3px solid #1a1a1a',
-      borderRadius: '12px', // Changed from 10px
+      borderRadius: '12px',
       position: 'absolute',
-      top: 50, // Changed from 55
-      left: 10, 
+      top: 50,
+      left: 10,
       zIndex: 5,
     },
     rightEarcup: {
@@ -148,16 +138,16 @@ const Avatar = () => {
       height: 45,
       backgroundColor: '#252525',
       border: '3px solid #1a1a1a',
-      borderRadius: '12px', // Changed from 10px
+      borderRadius: '12px',
       position: 'absolute',
-      top: 50, // Changed from 55
+      top: 50,
       right: 10,
       zIndex: 5,
     },
     leftEyeSocket: {
       width: EYE_SOCKET_WIDTH,
       height: EYE_SOCKET_HEIGHT,
-      backgroundColor: '#f0f0f0', // Changed from white
+      backgroundColor: '#f0f0f0',
       borderRadius: '40%',
       position: 'absolute',
       top: `${EYE_SOCKET_TOP_PERCENT * 100}%`,
@@ -167,7 +157,7 @@ const Avatar = () => {
     rightEyeSocket: {
       width: EYE_SOCKET_WIDTH,
       height: EYE_SOCKET_HEIGHT,
-      backgroundColor: '#f0f0f0', // Changed from white
+      backgroundColor: '#f0f0f0',
       borderRadius: '40%',
       position: 'absolute',
       top: `${EYE_SOCKET_TOP_PERCENT * 100}%`,
@@ -182,7 +172,7 @@ const Avatar = () => {
       position: 'absolute',
       top: '50%',
       left: '50%',
-      transition: 'transform 0.03s linear', // Added for smoothness
+      transition: 'transform 0.03s linear',
     },
     shoulders: {
       width: 160,
@@ -204,10 +194,10 @@ const Avatar = () => {
       <div style={styles.hair}></div>
       <div style={styles.head}>
         <div style={styles.leftEyeSocket}>
-          <div style={{...styles.pupil, transform: leftPupilTransform }}></div>
+          <div style={{ ...styles.pupil, transform: leftPupilTransform }}></div>
         </div>
         <div style={styles.rightEyeSocket}>
-          <div style={{...styles.pupil, transform: rightPupilTransform }}></div>
+          <div style={{ ...styles.pupil, transform: rightPupilTransform }}></div>
         </div>
       </div>
       <div style={styles.leftEarcup}></div>

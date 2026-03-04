@@ -1,19 +1,14 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import data from '../data.json';
 
-const Experience = () => {
-  const ref = useRef(null);
+const Experience: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
 
   const itemVariants = {
@@ -24,7 +19,7 @@ const Experience = () => {
   return (
     <section id="experience" className="section-padding bg-secondary bg-opacity-30">
       <div className="container-custom" ref={ref}>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -35,29 +30,23 @@ const Experience = () => {
           <div className="w-16 h-[2px] bg-light opacity-50"></div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="max-w-4xl"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {data.experience.map((exp, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               className={`relative border-l border-muted border-opacity-30 pl-6 md:pl-10 group ${
                 i === data.experience.length - 1 ? 'pb-4' : 'pb-12'
               }`}
               variants={itemVariants}
             >
-              {/* Timeline Dot */}
-              <div 
-                className="absolute w-4 h-4 rounded-full bg-primary border-[2px] border-muted border-opacity-50 -left-[8.5px] top-1.5 group-hover:border-light transition-colors duration-300 z-10"
-              ></div>
-              {/* Glowing Pulse Effect */}
-              <div 
-                className="absolute w-4 h-4 rounded-full bg-light opacity-0 scale-50 group-hover:scale-[1.8] group-hover:opacity-20 -left-[8.5px] top-1.5 transition-all duration-500 z-0 pointer-events-none"
-              ></div>
-              
+              <div className="absolute w-4 h-4 rounded-full bg-primary border-[2px] border-muted border-opacity-50 -left-[8.5px] top-1.5 group-hover:border-light transition-colors duration-300 z-10"></div>
+              <div className="absolute w-4 h-4 rounded-full bg-light opacity-0 scale-50 group-hover:scale-[1.8] group-hover:opacity-20 -left-[8.5px] top-1.5 transition-all duration-500 z-0 pointer-events-none"></div>
+
               <div className="flex flex-col md:flex-row md:items-start justify-between mb-4 mt-1">
                 <div className="mb-2 md:mb-0">
                   <h3 className="text-xl md:text-2xl font-bold text-light group-hover:text-white transition-colors">{exp.role}</h3>
@@ -71,7 +60,7 @@ const Experience = () => {
                   {exp.period}
                 </span>
               </div>
-              
+
               <ul className="space-y-3 mt-4 md:mt-6">
                 {exp.responsibilities.map((resp, idx) => (
                   <li key={idx} className="flex items-start text-muted text-sm md:text-base group-hover:text-opacity-100 transition-opacity">

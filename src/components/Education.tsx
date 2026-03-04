@@ -1,21 +1,15 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import data from '../data.json';
 
-const Education = () => {
-  const ref = useRef(null);
+const Education: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
-
   const { education, achievements } = data;
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
 
   const itemVariants = {
@@ -26,7 +20,7 @@ const Education = () => {
   return (
     <section id="education" className="section-padding bg-primary">
       <div className="container-custom" ref={ref}>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -38,24 +32,14 @@ const Education = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div 
-            className="md:col-span-2"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
+          <motion.div className="md:col-span-2" variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"}>
             <h3 className="text-xl font-medium mb-6 flex items-center">
               <div className="w-4 h-4 border border-light mr-3"></div>
               Education
             </h3>
-            
             <div className="space-y-8">
               {education.map((edu, i) => (
-                <motion.div 
-                  key={i} 
-                  className="border-l-2 border-muted border-opacity-30 pl-6 relative"
-                  variants={itemVariants}
-                >
+                <motion.div key={i} className="border-l-2 border-muted border-opacity-30 pl-6 relative" variants={itemVariants}>
                   <div className="absolute w-3 h-3 bg-primary border border-light rounded-full -left-[7px] top-1"></div>
                   <h4 className="text-lg font-medium mb-1">{edu.institution}</h4>
                   <p className="text-muted mb-1">{edu.degree} {edu.field && `- ${edu.field}`}</p>
@@ -64,37 +48,25 @@ const Education = () => {
               ))}
             </div>
           </motion.div>
-          
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
+
+          <motion.div variants={containerVariants} initial="hidden" animate={isInView ? "visible" : "hidden"}>
             <h3 className="text-xl font-medium mb-6 flex items-center">
               <div className="w-4 h-4 border border-light mr-3"></div>
               Achievements
             </h3>
-            
             <ul className="space-y-4">
               {achievements.map((achievement, i) => (
-                <motion.li 
-                  key={i} 
-                  className="flex items-start"
-                  variants={itemVariants}
-                >
+                <motion.li key={i} className="flex items-start" variants={itemVariants}>
                   <span className="text-light mt-1 mr-2 opacity-60">⁕</span>
                   <span>{achievement}</span>
                 </motion.li>
               ))}
             </ul>
 
-            <motion.div 
-              className="mt-8 p-4 border border-muted border-opacity-20 bg-secondary bg-opacity-30"
-              variants={itemVariants}
-            >
+            <motion.div className="mt-8 p-4 border border-muted border-opacity-20 bg-secondary bg-opacity-30" variants={itemVariants}>
               <h4 className="text-sm font-medium mb-2">Continuous Learning</h4>
               <p className="text-muted text-sm">
-                Always exploring new technologies and participating in hackathons 
+                Always exploring new technologies and participating in hackathons
                 to expand my knowledge and practical experience.
               </p>
             </motion.div>
