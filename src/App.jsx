@@ -4,6 +4,7 @@ import ResumeRedirect from './components/ResumeRedirect.jsx';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import Experience from './components/Experience.jsx';
 import Projects from './components/Projects.jsx';
 import Skills from './components/Skills.jsx';
 import Education from './components/Education.jsx';
@@ -42,6 +43,7 @@ function App() {
                   <Header />
                   <main>
                     <Hero />
+                    <Experience />
                     <Projects />
                     <Skills />
                     <Education />

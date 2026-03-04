@@ -1,32 +1,12 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import data from '../data.json';
 
 const Education = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  const education = [
-    {
-      institution: "Vignan's Institute of Information Technology",
-      degree: "Bachelor of Engineering",
-      field: "Computer Science and Engineering (CSE)",
-      period: "2022-2026"
-    },
-    {
-      institution: "Kendriya Vidyalaya No -2 SVN",
-      degree: "10+2",
-      period: ""
-    }
-  ];
-
-  const achievements = [
-    "Winner – IWD Hackathon by Google Developer Group Vizag",
-    "4* Coder on CodeChef, solved 600+ DSA problems across platforms like LeetCode, CodeChef, and CSES",
-    "CodeChef Student Chapter & GDG CP Lead – Led competitive programming events and workshops",
-    "National Handball Goalkeeper – Kendriya Vidyalaya",
-    "2019 National & Indian National Mathematics Olympiad (INMO) Regionalist",
-    "Participated in Hackathon conducted by VIIT ACM Chapter"
-  ];
+  const { education, achievements } = data;
 
   const containerVariants = {
     hidden: { opacity: 0 },

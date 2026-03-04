@@ -14,7 +14,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Projects', 'Skills', 'Education', 'Contact'];
+  const navItems = ['Home', 'Experience', 'Projects', 'Skills', 'Education', 'Contact'];
 
   const headerVariants = {
     initial: { y: -100 },

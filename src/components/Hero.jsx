@@ -54,13 +54,6 @@ const Hero = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
 
-  const sections = ['home', 'projects', 'skills', 'education'];
-  
-  const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({
-      behavior: 'smooth'
-    });
-  };
 
   return (
     <section id="home" className="h-screen flex items-center relative overflow-hidden">

@@ -1,0 +1,200 @@
+{
+  "personal": {
+    "name": "Nrusimha Sri Ganesh K",
+    "email": "ganeshknsml@gmail.com",
+    "mobile": "+91 6303798641",
+    "location": "Hyderabad, India",
+    "links": {
+      "github": "https://github.com/sri-ganeshk",
+      "leetcode": "https://leetcode.com/u/sri_2498",
+      "codechef": "https://www.codechef.com/users/s_2498",
+      "linkedin": "https://www.linkedin.com/in/sri-ganesh-k-5706ab269/",
+      "portfolio": "https://sriganeshk.me"
+    }
+  },
+  "summary": "Full Stack Developer with experience building high-performance web and mobile applications. Proficient in optimizing backend systems for scale, designing RESTful architectures, and implementing sub-2s latency solutions using Node.js and React. Passionate about distributed systems, cloud infrastructure, and writing clean, maintainable code.",
+  "experience": [
+    {
+      "company": "Inncircles",
+      "location": "Hyderabad, India",
+      "role": "Software Developer Intern",
+      "period": "Jul 2025 - Present",
+      "responsibilities": [
+        "Implemented document data extraction workflows using Amazon Textract, converting images and scanned documents into structured records and reducing manual data entry by 40%.",
+        "Developed backend features using Node.js and Angular, integrating Microsoft OneDrive APIs to automatically store project data in structured cloud repositories.",
+        "Built an AI-powered chatbot using LangChain and LangGraph, enabling agentic workflows and real-time retrieval of system data for contextual responses.",
+        "Developed data synchronization pipelines across NoSQL and SQL databases, optimizing APIs and improving dashboard data loading performance by 30%."
+      ]
+    },
+    {
+      "company": "FITBILL Gym System",
+      "location": "Remote / Hyderabad",
+      "role": "Full Stack Developer",
+      "period": "Jan 2025 - Jun 2025",
+      "responsibilities": [
+        "Built a high-availability fitness application serving 100+ active users, utilizing React Native for the client and Express.js for the microservices backend.",
+        "Refactored legacy backend infrastructure, reducing server costs by 90% while maintaining throughput for 2K+ daily transactions.",
+        "Developed analytics dashboards visualizing complex datasets for 25+ gym owners, enabling data-driven decision making."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Vignan's Institute of Information Technology",
+      "degree": "B.Tech in Computer Science",
+      "field": "CGPA: 8.15/10.0",
+      "period": "2022 - 2026",
+      "location": "Visakhapatnam, India"
+    },
+    {
+      "institution": "Kendriya Vidyalaya No -2 SVN",
+      "degree": "10+2",
+      "field": "",
+      "period": ""
+    }
+  ],
+  "projects": [
+    {
+      "title": "Student Attendance Tracking System",
+      "description": "An innovative serverless attendance solution leveraging AWS Lambda and Python to deliver cost-effective, real-time attendance tracking for educational institutions. The system employs sophisticated HTML parsing techniques with BeautifulSoup to extract attendance data from various sources, processes it through a highly optimized pipeline, and delivers accurate, instantaneous results to thousands of users daily without incurring operational costs, making it an ideal solution for resource-constrained educational environments.",
+      "tech": [
+        "AWS Lambda",
+        "Python",
+        "WebSocket",
+        "DynamoDB",
+        "BeautifulSoup"
+      ],
+      "image": "/images/attendance-preview.png",
+      "liveLink": "https://github.com/sri-ganeshk/Attendance_tracker",
+      "highlights": [
+        "Handles ~3,000 unique daily users",
+        "10,000+ requests/day at zero cost",
+        "Avg response time of 1.5-2 seconds",
+        "Real-time HTML parsing"
+      ]
+    },
+    {
+      "title": "StudySphere \u2013 Curated Learning Platform",
+      "description": "An advanced educational platform that revolutionizes self-paced learning through AI-powered content organization and generation. StudySphere allows users to curate and structure courses on any topic with intelligent assistance, automatically generating customized flashcards, comprehensive notes, and interactive quizzes tailored to individual learning preferences. The integration with Google Gemini API enables sophisticated content summarization and knowledge extraction, creating a personalized learning experience that adapts to users' comprehension levels and learning styles.",
+      "tech": [
+        "Next.js",
+        "Prisma",
+        "Google Gemini API",
+        "TailwindCSS",
+        "PostgreSQL"
+      ],
+      "image": "/images/studysphere-preview.png",
+      "liveLink": "https://hackthon-six.vercel.app/",
+      "highlights": [
+        "Automatic flashcards & notes generation",
+        "On-the-fly quizzes",
+        "AI-powered content summarization",
+        "Self-paced, structured learning"
+      ]
+    },
+    {
+      "title": "Movie Review Platform",
+      "description": "A modern, fully responsive web application designed for movie enthusiasts to discover, review, and engage with film content. The platform leverages The Movie Database API to provide users with real-time access to a vast library of films, complete with detailed information and high-quality imagery. With a robust user authentication system using JWT tokens, the application delivers personalized experiences allowing users to create accounts, save favorites, and contribute their own reviews to the community. The intuitive interface, built with React and styled with Tailwind CSS, ensures a seamless viewing experience across all devices.",
+      "tech": [
+        "React",
+        "Tailwind CSS",
+        "TMDB API",
+        "MongoDB",
+        "JWT",
+        "Responsive Design"
+      ],
+      "image": "/images/movie-review-preview.png",
+      "liveLink": "https://movie-review-omega-seven.vercel.app/",
+      "highlights": [
+        "Real-time movie data integration with TMDB API",
+        "Secure JWT-based user authentication",
+        "Intuitive and fully responsive design",
+        "Personalized user experiences with saved preferences"
+      ]
+    },
+    {
+      "title": "Pressure Cooker Whistle Counter",
+      "description": "An innovative Android application born from everyday necessity, designed to automate the mundane task of counting pressure cooker whistles during cooking. This offline-first app utilizes sophisticated audio processing algorithms to detect and count whistles in real-time using the device's microphone, without requiring an internet connection. With a focus on privacy, the application processes all audio data locally and on-the-fly without storing any recordings. The implementation includes custom sound analysis using Fast Fourier Transform (FFT) and Tarsos DSP library to accurately identify the distinctive whistle frequency pattern amid background noise, making cooking precision effortless for users.",
+      "tech": [
+        "Java",
+        "Kotlin",
+        "FFT",
+        "Tarsos DSP",
+        "Spectrograms",
+        "Android Media"
+      ],
+      "image": "/images/whistle-counter-preview.png",
+      "liveLink": "",
+      "highlights": [
+        "Offline operation for areas with limited connectivity",
+        "Privacy-focused with no data storage",
+        "Real-time audio processing and frequency analysis",
+        "Future ML integration for multi-cooker scenarios"
+      ]
+    }
+  ],
+  "achievements": [
+    "Hackathon Winner: Google Developer Group Vizag IWD Hackathon (2023) - Built an accessibility tool focused on inclusive design.",
+    "Competitive Programming: Rated 4\u22c6 on CodeChef; solved 600+ DSA problems across LeetCode and CodeChef.",
+    "Leadership: Founded and led the CodeChef College Chapter; mentored 50+ peers in competitive coding, system design, and open-source contributions."
+  ],
+  "technical_skills": [
+    {
+      "category": "Languages",
+      "skills": [
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "Python",
+        "Java",
+        "C++",
+        "SQL",
+        "HTML5",
+        "CSS3"
+      ]
+    },
+    {
+      "category": "Frontend",
+      "skills": [
+        "React.js",
+        "Next.js",
+        "Redux",
+        "Angular",
+        "React Native",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "category": "Backend",
+      "skills": [
+        "Node.js",
+        "Express.js",
+        "Microservices",
+        "REST APIs",
+        "WebSockets",
+        "GraphQL"
+      ]
+    },
+    {
+      "category": "Databases & Cloud",
+      "skills": [
+        "PostgreSQL",
+        "MongoDB",
+        "DynamoDB",
+        "Redis",
+        "AWS (EC2, S3, Lambda)",
+        "Firebase"
+      ]
+    },
+    {
+      "category": "Tools & Concepts",
+      "skills": [
+        "Git",
+        "Docker",
+        "Kubernetes",
+        "CI/CD (GitHub Actions)",
+        "System Design",
+        "Jest"
+      ]
+    }
+  ]
+}
