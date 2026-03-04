@@ -4,6 +4,7 @@ import { Mail, Phone, Share2 } from 'lucide-react';
 import axios from 'axios';
 import { github, linkdien } from '../constant';
 import portfolioData from '../data.json';
+import { toast } from 'sonner';
 
 interface FormData {
   name: string;
@@ -11,11 +12,6 @@ interface FormData {
   message: string;
 }
 
-interface Status {
-  submitting: boolean;
-  submitted: boolean;
-  error: string | null;
-}
 
 const Contact: React.FC = () => {
   const { personal } = portfolioData;
@@ -24,7 +20,7 @@ const Contact: React.FC = () => {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<Status>({ submitting: false, submitted: false, error: null });
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -33,24 +29,22 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus({ submitting: true, submitted: false, error: null });
+    setSubmitting(true);
 
     axios.post('/api/contact', {
       name: formData.name,
       email: formData.email,
       message: formData.message
     })
-      .then((response) => {
-        console.log('Email sent successfully:', response.data);
-        setStatus({ submitting: false, submitted: true, error: null });
+      .then(() => {
+        setSubmitting(false);
         setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => {
-          setStatus(prev => ({ ...prev, submitted: false }));
-        }, 5000);
+        toast.success('Message sent successfully!');
       })
       .catch((error) => {
         console.error('Failed to send email:', error);
-        setStatus({ submitting: false, submitted: false, error: 'Failed to send message. Please try again.' });
+        setSubmitting(false);
+        toast.error('Failed to send message. Please try again.');
       });
   };
 
@@ -157,25 +151,16 @@ const Contact: React.FC = () => {
               </div>
 
               <button type="submit"
-                className={`btn btn-primary w-full ${status.submitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-                disabled={status.submitting}>
-                {status.submitting ? 'Sending...' : 'Send Message'}
+                className={`btn btn-primary w-full ${submitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                disabled={submitting}>
+                {submitting ? 'Sending...' : 'Send Message'}
               </button>
 
-              {status.submitted && (
-                <div className="mt-4 p-3 bg-green-500 bg-opacity-20 border border-green-500 text-green-300 text-center">
-                  Message sent successfully!
-                </div>
-              )}
-              {status.error && (
-                <div className="mt-4 p-3 bg-red-500 bg-opacity-20 border border-red-500 text-red-300 text-center">
-                  {status.error}
-                </div>
-              )}
             </form>
           </motion.div>
         </div>
       </div>
+
     </section>
   );
 };

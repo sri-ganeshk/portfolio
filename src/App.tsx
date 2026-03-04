@@ -11,6 +11,7 @@ import Education from './components/Education.tsx';
 import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
 import Loader from './components/Loader.tsx';
+import { Toaster } from 'sonner';
 
 function App(): React.ReactElement {
   const [loading, setLoading] = useState(true);
@@ -55,6 +56,20 @@ function App(): React.ReactElement {
           }
         />
       </Routes>
+      <Toaster
+        position="bottom-right"
+        theme="dark"
+        duration={3000}
+        toastOptions={{
+          style: {
+            background: '#111',
+            border: '1px solid rgba(255,255,255,0.1)',
+            color: '#f5f5f5',
+            fontFamily: 'monospace',
+            fontSize: '0.8rem',
+          },
+        }}
+      />
     </Router>
   );
 }
