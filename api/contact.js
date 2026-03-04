@@ -1,5 +1,5 @@
 /* global process */
-import axios from 'axios';
+import emailjs from '@emailjs/nodejs';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -30,10 +30,18 @@ export default async function handler(req, res) {
   };
 
   try {
-    await axios.post('https://api.emailjs.com/api/v1.0/email/send', data);
-    return res.status(200).json({ message: 'Email sent successfully!' });
+    const response = await emailjs.send(
+      process.env.SERVICE_ID,
+      process.env.TEMPLATE_ID,
+      data.template_params,
+      {
+        publicKey: process.env.PUBLIC_KEY,
+        privateKey: process.env.PRIVATE_KEY, // Note: You should add PRIVATE_KEY to your Vercel env later
+      }
+    );
+    return res.status(200).json({ message: 'Email sent successfully!', response });
   } catch (error) {
-    console.error('EmailJS Error:', error.response?.data || error.message);
+    console.error('EmailJS Error:', error);
     return res.status(500).json({ message: 'Failed to send email' });
   }
 }
