@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, Phone, Share2, Twitter } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import axios from 'axios';
 import { github, linkdien } from '../constant.js';
 import portfolioData from '../data.json';
 
@@ -44,31 +44,13 @@ const Contact = () => {
     e.preventDefault();
     setStatus({ submitting: true, submitted: false, error: null });
 
-    // Format the current date and time in UTC as YYYY-MM-DD HH:MM:SS
-    const now = new Date();
-    const formattedDate = now.toISOString().replace('T', ' ').substring(0, 19);
-
-    // EmailJS configuration
-    const serviceId = import.meta.env.VITE_SERVICE_ID;
-    const templateId = import.meta.env.VITE_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-
-    // Initialize EmailJS with your public key
-    emailjs.init(publicKey);
-
-    // Prepare form data for EmailJS
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      message: formData.message,
-      to_email: personal.email,
-      date_time: formattedDate,
-      user_login: 'sri-ganeshk' // could also use personal.links.github.split('/').pop()
-    };
-
-    emailjs.send(serviceId, templateId, templateParams)
+    axios.post('/api/contact', {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message
+    })
       .then((response) => {
-        console.log('Email sent successfully:', response);
+        console.log('Email sent successfully:', response.data);
         setStatus({ submitting: false, submitted: true, error: null });
         setFormData({ name: '', email: '', message: '' });
         
